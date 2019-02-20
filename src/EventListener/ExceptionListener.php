@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventListener;
 
 use App\Exception\ValidationException;
@@ -11,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 class ExceptionListener
 {
-    public function onKernelException(GetResponseForExceptionEvent $event)
+    public function onKernelException(GetResponseForExceptionEvent $event): void
     {
         $status = JsonResponse::HTTP_INTERNAL_SERVER_ERROR;
         if ($event->getException() instanceof UniqueConstraintViolationException) {

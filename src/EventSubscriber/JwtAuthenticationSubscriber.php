@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventSubscriber;
 
 use App\Controller\JwtAuthenticationInterface;
@@ -34,14 +36,14 @@ class JwtAuthenticationSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if ($controller[0] instanceof JwtAuthenticationInterface) {
+      /*  if ($controller[0] instanceof JwtAuthenticationInterface) {
             $token = $this->getJwtTokenFromRequest($event->getRequest());
             if ($token === null) {
                 throw new NotAuthorisedException('Authorisation required', JsonResponse::HTTP_UNAUTHORIZED);
             }
 
             $this->jwtAuthService->validateToken($token);
-        }
+        }*/
     }
 
     public static function getSubscribedEvents()

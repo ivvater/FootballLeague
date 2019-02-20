@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\League;
@@ -19,32 +21,14 @@ class LeagueRepository extends ServiceEntityRepository
         parent::__construct($registry, League::class);
     }
 
-    // /**
-    //  * @return League[] Returns an array of League objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Remove league
+     *
+     * @param League $league
+     */
+    public function remove(League $league): void
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $this->getEntityManager()->remove($league);
+        $this->getEntityManager()->flush();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?League
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

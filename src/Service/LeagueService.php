@@ -1,22 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Entity\League;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\LeagueRepository;
 
 class LeagueService
 {
-    private $em;
+    private $leagueRepository;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(LeagueRepository $leagueRepository)
     {
-        $this->em = $em;
+        $this->leagueRepository = $leagueRepository;
     }
 
-    public function isExists(int $leagueId) :bool
+    /**
+     * Check if given league exists
+     *
+     * @param int $leagueId
+     * @return bool
+     */
+    public function isExists(int $leagueId): bool
     {
-        return $this->em->getRepository('App:League')->find($leagueId) !== null;
+        return $this->leagueRepository->find($leagueId) !== null;
+    }
+
+    /**
+     * @param int $leagueId
+     * @return League
+     */
+    public function find(int $leagueId): League
+    {
+        return $this->leagueRepository->find($leagueId);
     }
 
     /**
@@ -26,7 +43,6 @@ class LeagueService
      */
     public function delete(League $league): void
     {
-        $this->em->remove($league);
-        $this->em->flush();
+        $this->leagueRepository->remove($league);
     }
 }

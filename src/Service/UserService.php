@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UserRepository;
 
 class UserService
 {
-    private $em;
+    private $userRepository;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->em = $em;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -22,6 +24,6 @@ class UserService
      */
     public function getUserByEmail(String $email): ?User
     {
-        return $this->em->getRepository('App:User')->findOneBy(['email' => $email]);
+        return $this->userRepository->findOneBy(['email' => $email]);
     }
 }

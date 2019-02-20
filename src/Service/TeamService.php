@@ -1,20 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Entity\Team;
+use App\Factory\TeamFactory;
+use App\Repository\TeamRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TeamService
 {
-    private $em;
+    private $teamFactory;
 
-    public function __construct(EntityManagerInterface $em)
+    private $teamRepository;
+
+    private $leagueService;
+
+    public function __construct(TeamFactory $teamFactory, TeamRepository $teamRepository, LeagueService $leagueService)
     {
-        $this->em = $em;
+        $this->teamFactory = $teamFactory;
+        $this->teamRepository = $teamRepository;
+        $this->leagueService = $leagueService;
     }
 
     /**
@@ -25,15 +34,8 @@ class TeamService
      */
     public function create(array $data): Team
     {
-        $team = new Team();
-        $team->setName($data['name']);
-        $team->setStrip($data['strip']);
-
-        $league = $this->em->getRepository('App:League')->find($data['league_id']);
-        $team->setLeague($league);
-
-        $this->em->persist($team);
-        $this->em->flush();
+        $league = $this->leagueService->find($data['league_id']);
+        $team = $this->teamRepository->save($this->teamFactory->make($data, $league));
 
         return $team;
     }
@@ -55,15 +57,12 @@ class TeamService
             $team->setStrip($data['strip']);
         }
 
-        if (!empty($data['league_id']) && $team->getLeague()->getId() != $data['league_id']) {
-            $league = $this->em->getRepository('App:League')->find($data['league_id']);
+        if (!empty($data['league_id'])) {
+            $league = $this->leagueService->find($data['league_id']);
             $team->setLeague($league);
         }
 
-        $this->em->persist($team);
-        $this->em->flush();
-
-        return $team;
+        return $this->teamRepository->save($team);
     }
 
     /**
@@ -74,7 +73,7 @@ class TeamService
      */
     public function getOneByName(String $name): ?Team
     {
-        return $this->em->getRepository('App:Team')->findOneByName($name);
+        return $this->teamRepository->findOneByName($name);
     }
 
     /**
