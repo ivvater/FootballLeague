@@ -39,7 +39,7 @@ abstract class FixtureAwareBaseTestCase extends KernelTestCase
     public function setUp()
     {
         $this->client = new \GuzzleHttp\Client([
-            'base_uri' => 'http://ecsoonweb.loc/',
+            'base_uri' => getenv('APP_DOMAIN'),
             'exceptions' => true
         ]);
 
