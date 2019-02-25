@@ -6,8 +6,7 @@ namespace App\Controller;
 
 use App\Service\JwtAuthenticationService;
 use App\Service\UserService;
-use App\RequestValidator\User\GenerateJwtTokenValidator;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use App\Request\Validator\User\GenerateJwtTokenValidator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,8 +27,7 @@ class AuthorisationController extends AbstractController
     /**
      * Authorise user
      *
-     * @Route("/authorisation")
-     * @Method("POST")
+     * @Route("/authorisation", methods={"POST"})
      * @param Request $request
      * @param GenerateJwtTokenValidator $validator
      * @return JsonResponse

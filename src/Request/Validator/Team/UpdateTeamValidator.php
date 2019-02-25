@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\RequestValidator\Team;
+namespace App\Request\Validator\Team;
 
 use App\Exception\ValidationException;
-use App\RequestValidator\RequestValidatorInterface;
+use App\Request\Validator\RequestValidatorInterface;
 use App\Service\LeagueService;
 use App\Service\TeamService;
 use Doctrine\ORM\EntityManagerInterface;

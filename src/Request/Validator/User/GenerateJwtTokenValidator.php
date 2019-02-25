@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\RequestValidator\User;
+namespace App\Request\Validator\User;
 
 use App\Exception\ValidationException;
-use App\RequestValidator\RequestValidatorInterface;
+use App\Request\Validator\RequestValidatorInterface;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;

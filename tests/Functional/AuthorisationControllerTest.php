@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Functional;
 
+use App\Tests\FixtureAwareBaseTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AuthorisationControllerTest extends FixtureAwareBaseTestCase

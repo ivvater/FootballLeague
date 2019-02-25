@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\RequestValidator;
+namespace App\Request\Validator;
 
 use Symfony\Component\HttpFoundation\Request;
 

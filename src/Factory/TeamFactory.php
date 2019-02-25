@@ -11,7 +11,7 @@ class TeamFactory
 {
 
     /**
-     * Team factory
+     * Team factory. Make a Team instance from array
      *
      * @param array $data
      * @param League $league

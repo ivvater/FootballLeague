@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Functional;
 
 use App\Entity\League;
+use App\Tests\FixtureAwareBaseTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LeagueTeamsControllerTest extends FixtureAwareBaseTestCase

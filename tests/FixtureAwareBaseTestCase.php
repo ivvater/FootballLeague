@@ -40,7 +40,7 @@ abstract class FixtureAwareBaseTestCase extends KernelTestCase
     {
         $this->client = new \GuzzleHttp\Client([
             'base_uri' => getenv('APP_DOMAIN'),
-            'exceptions' => true
+            'exceptions' => false
         ]);
 
         self::bootKernel();

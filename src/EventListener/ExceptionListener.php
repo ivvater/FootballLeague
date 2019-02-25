@@ -8,8 +8,7 @@ use App\Exception\ValidationException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ExceptionListener
 {
@@ -20,6 +19,8 @@ class ExceptionListener
             $status = JsonResponse::HTTP_BAD_REQUEST;
         } elseif ($event->getException() instanceof ValidationException) {
             $status = JsonResponse::HTTP_UNPROCESSABLE_ENTITY;
+        } elseif ($event->getException() instanceof NotFoundHttpException) {
+            $status = JsonResponse::HTTP_NOT_FOUND;
         }
 
         $response =  new JsonResponse(

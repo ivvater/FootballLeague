@@ -8,7 +8,6 @@ use App\Entity\League;
 use App\Service\LeagueService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class LeagueController extends AbstractController implements JwtAuthenticationInterface
@@ -23,8 +22,7 @@ class LeagueController extends AbstractController implements JwtAuthenticationIn
     /**
      * Delete League with all teams attached
      *
-     * @Route("/leagues/{id}")
-     * @Method("DELETE")
+     * @Route("/leagues/{id}", methods={"DELETE"})
      * @param League $league
      * @return JsonResponse
      */

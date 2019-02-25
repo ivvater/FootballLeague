@@ -89,6 +89,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "league/fractal": {
+        "version": "0.17.0"
+    },
     "maxwellmc/doctrine-fixtures-autonumber-reset-bundle": {
         "version": "v2.0.0"
     },

@@ -59,7 +59,7 @@ class JwtAuthenticationSubscriber implements EventSubscriberInterface
      */
     private function getJwtTokenFromRequest(Request $request): ?String
     {
-        $authHeader = $request->headers->get('Authorization');
+        $authHeader = $request->headers->get('Authorization', '');
         if (strpos($authHeader, "Bearer ") !== false) {
             $token = explode(" ", $authHeader);
             if (isset($token[1])) {
