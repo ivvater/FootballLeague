@@ -13,13 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GenerateJwtTokenValidator implements RequestValidatorInterface
 {
-    private $em;
-
     private $userService;
 
-    public function __construct(EntityManagerInterface $em, UserService $userService)
+    /**
+     * GenerateJwtTokenValidator constructor.
+     * @param UserService $userService
+     * @codeCoverageIgnore
+     */
+    public function __construct(UserService $userService)
     {
-        $this->em = $em;
         $this->userService = $userService;
     }
 

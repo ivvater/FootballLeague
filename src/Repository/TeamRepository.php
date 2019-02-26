@@ -16,6 +16,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TeamRepository extends ServiceEntityRepository
 {
+    /**
+     * TeamRepository constructor.
+     * @param RegistryInterface $registry
+     * @codeCoverageIgnore
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Team::class);

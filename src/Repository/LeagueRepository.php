@@ -16,6 +16,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class LeagueRepository extends ServiceEntityRepository
 {
+    /**
+     * LeagueRepository constructor.
+     * @param RegistryInterface $registry
+     * @codeCoverageIgnore
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, League::class);

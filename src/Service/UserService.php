@@ -11,6 +11,11 @@ class UserService
 {
     private $userRepository;
 
+    /**
+     * UserService constructor.
+     * @param UserRepository $userRepository
+     * @codeCoverageIgnore
+     */
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
@@ -19,10 +24,10 @@ class UserService
     /**
      * Get one user by given email or null if no User found
      *
-     * @param String $email
+     * @param string $email
      * @return User|null
      */
-    public function getUserByEmail(String $email): ?User
+    public function getUserByEmail(string $email): ?User
     {
         return $this->userRepository->findOneBy(['email' => $email]);
     }

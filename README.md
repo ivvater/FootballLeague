@@ -10,3 +10,6 @@
 6) Do not forget to specify `APP_DOMAIN` in .env.test
 7) Do not forget to specify `DATABASE_URL` and `JWT_SECRET` in your local .env file
 
+###### Minor notes:
+1) Repository not covered with tests. Reason described here `https://symfony.com/doc/current/testing/doctrine.html`
+2) `@codeCoverageIgnore` added to __construct methods to have more transparent code coverage statistic

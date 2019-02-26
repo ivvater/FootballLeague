@@ -2,6 +2,7 @@
 
 namespace App\Tests\Unit;
 
+use App\Entity\League;
 use App\Repository\LeagueRepository;
 use App\Service\LeagueService;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -44,4 +45,27 @@ class LeagueServiceTest extends TestCase
         $this->assertEquals(false, $res);
     }
 
+    public function testFindLeague()
+    {
+        $league = new League();
+
+        $this->leagueRepositoryMock->expects($this->once())->method('find')->willReturn($league);
+
+        $leagueService = new LeagueService($this->leagueRepositoryMock);
+        $res = $leagueService->find(1);
+
+        $this->assertEquals($league, $res);
+    }
+
+    public function testDeleteLeague()
+    {
+        $league = new League();
+
+        $this->leagueRepositoryMock->expects($this->once())->method('remove')->willReturn(null);
+
+        $leagueService = new LeagueService($this->leagueRepositoryMock);
+        $leagueService->delete($league);
+
+        $this->assertTrue(true);
+    }
 }

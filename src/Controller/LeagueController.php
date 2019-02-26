@@ -14,6 +14,11 @@ class LeagueController extends AbstractController implements JwtAuthenticationIn
 {
     private $leagueService;
 
+    /**
+     * LeagueController constructor.
+     * @param LeagueService $leagueService
+     * @codeCoverageIgnore
+     */
     public function __construct(LeagueService $leagueService)
     {
         $this->leagueService = $leagueService;

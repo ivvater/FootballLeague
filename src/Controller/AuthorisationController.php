@@ -18,6 +18,12 @@ class AuthorisationController extends AbstractController
 
     private $authorisationService;
 
+    /**
+     * AuthorisationController constructor.
+     * @param UserService $userService
+     * @param JwtAuthenticationService $authorisationService
+     * @codeCoverageIgnore
+     */
     public function __construct(UserService $userService, JwtAuthenticationService $authorisationService)
     {
         $this->userService = $userService;

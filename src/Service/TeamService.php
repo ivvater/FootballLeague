@@ -16,6 +16,13 @@ class TeamService
 
     private $leagueService;
 
+    /**
+     * TeamService constructor.
+     * @param TeamFactory $teamFactory
+     * @param TeamRepository $teamRepository
+     * @param LeagueService $leagueService
+     * @codeCoverageIgnore
+     */
     public function __construct(TeamFactory $teamFactory, TeamRepository $teamRepository, LeagueService $leagueService)
     {
         $this->teamFactory = $teamFactory;
@@ -65,10 +72,10 @@ class TeamService
     /**
      * Get one Team by Team name or null if no team found
      *
-     * @param String $name
+     * @param string $name
      * @return Team|null
      */
-    public function getOneByName(String $name): ?Team
+    public function getOneByName(string $name): ?Team
     {
         return $this->teamRepository->findOneByName($name);
     }

@@ -18,6 +18,12 @@ class LeagueTeamsController extends AbstractController implements JwtAuthenticat
 
     private $responseFactory;
 
+    /**
+     * LeagueTeamsController constructor.
+     * @param TeamService $teamService
+     * @param ResponseFactory $responseFactory
+     * @codeCoverageIgnore
+     */
     public function __construct(TeamService $teamService, ResponseFactory $responseFactory)
     {
         $this->teamService = $teamService;

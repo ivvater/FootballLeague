@@ -23,11 +23,20 @@ class JwtAuthenticationSubscriber implements EventSubscriberInterface
 {
     private $jwtAuthService;
 
+    /**
+     * JwtAuthenticationSubscriber constructor.
+     * @param JwtAuthenticationService $jwtAuthService
+     * @codeCoverageIgnore
+     */
     public function __construct(JwtAuthenticationService $jwtAuthService)
     {
         $this->jwtAuthService = $jwtAuthService;
     }
 
+    /**
+     * @param FilterControllerEvent $event
+     * @codeCoverageIgnore
+     */
     public function onKernelController(FilterControllerEvent $event)
     {
         $controller = $event->getController();
@@ -46,6 +55,10 @@ class JwtAuthenticationSubscriber implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @return array
+     * @codeCoverageIgnore
+     */
     public static function getSubscribedEvents()
     {
         return array(
@@ -55,9 +68,9 @@ class JwtAuthenticationSubscriber implements EventSubscriberInterface
 
     /**
      * @param Request $request
-     * @return null|String
+     * @return null|string
      */
-    private function getJwtTokenFromRequest(Request $request): ?String
+    private function getJwtTokenFromRequest(Request $request): ?string
     {
         $authHeader = $request->headers->get('Authorization', '');
         if (strpos($authHeader, "Bearer ") !== false) {

@@ -14,7 +14,12 @@ class JwtAuthenticationService
 
     const LIFE_TIME = 60 * 15;
 
-    public function __construct(String $jwtSecret)
+    /**
+     * JwtAuthenticationService constructor.
+     * @param string $jwtSecret
+     * @codeCoverageIgnore
+     */
+    public function __construct(string $jwtSecret)
     {
         $this->jwtSecret = $jwtSecret;
     }
@@ -23,9 +28,9 @@ class JwtAuthenticationService
      * Generate jwt token by User request
      *
      * @param User $user
-     * @return String
+     * @return string
      */
-    public function generateToken(User $user): String
+    public function generateToken(User $user): string
     {
         $issuedAt = time();
         $secondsValid = self::LIFE_TIME;
@@ -49,9 +54,9 @@ class JwtAuthenticationService
     /**
      * Validate given jwt token
      *
-     * @param String $token
+     * @param string $token
      */
-    public function validateToken(String $token): void
+    public function validateToken(string $token): void
     {
         $parts = explode('.', $token);
         $body = "$parts[0].$parts[1]";

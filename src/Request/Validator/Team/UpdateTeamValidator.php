@@ -14,17 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UpdateTeamValidator implements RequestValidatorInterface
 {
-    private $em;
-
     private $leagueService;
 
-    private $teamService;
-
-    public function __construct(EntityManagerInterface $em, LeagueService $leagueService, TeamService $teamService)
+    /**
+     * UpdateTeamValidator constructor.
+     * @param LeagueService $leagueService
+     * @codeCoverageIgnore
+     */
+    public function __construct(LeagueService $leagueService)
     {
-        $this->em = $em;
         $this->leagueService = $leagueService;
-        $this->teamService = $teamService;
     }
 
     /**

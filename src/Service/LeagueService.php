@@ -11,6 +11,11 @@ class LeagueService
 {
     private $leagueRepository;
 
+    /**
+     * LeagueService constructor.
+     * @param LeagueRepository $leagueRepository
+     * @codeCoverageIgnore
+     */
     public function __construct(LeagueRepository $leagueRepository)
     {
         $this->leagueRepository = $leagueRepository;
