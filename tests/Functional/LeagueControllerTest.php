@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functional;
+namespace App\Tests\Controller;
 
 use App\Entity\League;
 use App\Tests\FixtureAwareBaseTestCase;
@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LeagueControllerTest extends FixtureAwareBaseTestCase
 {
-    public function testDeleteLeague()
+
+    public function testDeleteLeague(): void
     {
         $league = $this->em->getRepository(League::class)->findOneBy([]);
 
