@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\League;
-use App\Repository\LeagueRepository;
+use App\Repository\LeagueRepositoryInterface;
 
 class LeagueService
 {
@@ -13,10 +13,10 @@ class LeagueService
 
     /**
      * LeagueService constructor.
-     * @param LeagueRepository $leagueRepository
+     * @param LeagueRepositoryInterface $leagueRepository
      * @codeCoverageIgnore
      */
-    public function __construct(LeagueRepository $leagueRepository)
+    public function __construct(LeagueRepositoryInterface $leagueRepository)
     {
         $this->leagueRepository = $leagueRepository;
     }

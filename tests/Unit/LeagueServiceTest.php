@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Unit;
 
 use App\Entity\League;
-use App\Repository\LeagueRepository;
+use App\Repository\LeagueRepositoryInterface;
 use App\Service\LeagueService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +15,7 @@ class LeagueServiceTest extends TestCase
     /** @var LeagueService|MockObject $leagueServiceMock*/
     private $leagueServiceMock;
 
-    /** @var LeagueRepository|MockObject $leagueServiceMock*/
+    /** @var LeagueRepositoryInterface|MockObject $leagueServiceMock*/
     private $leagueRepositoryMock;
 
     protected function setUp()
@@ -22,7 +24,7 @@ class LeagueServiceTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->leagueRepositoryMock = $this->getMockBuilder(LeagueRepository::class)
+        $this->leagueRepositoryMock = $this->getMockBuilder(LeagueRepositoryInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
     }

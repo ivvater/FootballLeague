@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method League[]    findAll()
  * @method League[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LeagueRepository extends ServiceEntityRepository
+class LeagueRepository extends ServiceEntityRepository implements LeagueRepositoryInterface
 {
     /**
      * LeagueRepository constructor.

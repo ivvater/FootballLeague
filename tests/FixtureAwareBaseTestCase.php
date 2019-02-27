@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests;
 
 use App\DataFixtures\AppFixtures;
@@ -95,7 +97,7 @@ abstract class FixtureAwareBaseTestCase extends KernelTestCase
     protected function getValidToken()
     {
         $authService = self::$container->get('App\Service\JwtAuthenticationService');
-        $user = $this->em->getRepository(User::class)->findOneBy(['email' => SELF::TEST_USER_EMAIL]);
+        $user = $this->em->getRepository(User::class)->findOneBy(['email' => self::TEST_USER_EMAIL]);
 
         return $authService->generateToken($user);
     }

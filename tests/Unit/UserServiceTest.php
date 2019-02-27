@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Unit;
 
 use App\Entity\User;
-use App\Repository\UserRepository;
+use App\Repository\UserRepositoryInterface;
 use App\Service\UserService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +14,7 @@ class UserServiceTest extends TestCase
 {
     const TEST_USER_EMAIL = "test.user@test.com";
 
-    /** @var UserRepository|MockObject $teamRepositoryMock*/
+    /** @var UserRepositoryInterface|MockObject $teamRepositoryMock*/
     private $userRepositoryMock;
 
     /** @var UserService|MockObject $leagueServiceMock*/
@@ -20,7 +22,7 @@ class UserServiceTest extends TestCase
 
     protected function setUp()
     {
-        $this->userRepositoryMock = $this->getMockBuilder(UserRepository::class)
+        $this->userRepositoryMock = $this->getMockBuilder(UserRepositoryInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 

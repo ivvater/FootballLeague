@@ -6,7 +6,7 @@ namespace App\Service;
 
 use App\Entity\Team;
 use App\Factory\TeamFactory;
-use App\Repository\TeamRepository;
+use App\Repository\TeamRepositoryInterface;
 
 class TeamService
 {
@@ -19,11 +19,15 @@ class TeamService
     /**
      * TeamService constructor.
      * @param TeamFactory $teamFactory
-     * @param TeamRepository $teamRepository
+     * @param TeamRepositoryInterface $teamRepository
      * @param LeagueService $leagueService
      * @codeCoverageIgnore
      */
-    public function __construct(TeamFactory $teamFactory, TeamRepository $teamRepository, LeagueService $leagueService)
+    public function __construct(
+        TeamFactory $teamFactory,
+        TeamRepositoryInterface $teamRepository,
+        LeagueService $leagueService
+    )
     {
         $this->teamFactory = $teamFactory;
         $this->teamRepository = $teamRepository;
