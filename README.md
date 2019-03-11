@@ -1,6 +1,4 @@
-## Football leagues REST api
-
-### This is a Symfony Engineer Offsite Development Task
+### This is a Symfony JWT auth example implementation
 #### Notes:
 1) JWT authorisation implementation is primitive. With additional time efforts it can be extended with refresh token.
 2) Tests implemented in a primitive way as well (1 test with HTTP response for 1 endpoint). No negative testing.
@@ -11,5 +9,5 @@
 7) Do not forget to specify `DATABASE_URL` and `JWT_SECRET` in your local .env file
 
 ###### Minor notes:
-1) Repository not covered with tests. Reason described here `https://symfony.com/doc/current/testing/doctrine.html`
+1) Repository not covered with unit tests. Reason described here `https://symfony.com/doc/current/testing/doctrine.html`
 2) `@codeCoverageIgnore` added to __construct methods to have more transparent code coverage statistic
